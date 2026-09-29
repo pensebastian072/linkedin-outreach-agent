@@ -26,3 +26,8 @@ campaign_*.json
 Thumbs.db
 .vscode/
 .idea/
+
+# Local runtime data (prospects, campaigns) - never commit
+professional_prospects.csv
+professional_campaigns.json
+research_reports.json

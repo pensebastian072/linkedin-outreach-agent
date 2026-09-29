@@ -172,14 +172,17 @@ def provide_recommendations():
         print("   Copy-Item .env.example .env")
         print()
     
-    with open('.env', 'r') as f:
-        if 'your_anthropic_api_key_here' in f.read():
-            print("2. Get Claude API key:")
-            print("   • Visit: https://console.anthropic.com")
-            print("   • Sign up/login with Claude Pro account")
-            print("   • Create API key in 'API Keys' section")
-            print("   • Replace 'your_anthropic_api_key_here' in .env")
-            print()
+    env_text = ''
+    if os.path.exists('.env'):
+        with open('.env', 'r') as f:
+            env_text = f.read()
+    if not env_text or 'your_anthropic_api_key_here' in env_text:
+        print("2. Get an Anthropic API key:")
+        print("   • Visit: https://console.anthropic.com")
+        print("   • Sign in to the Anthropic Console (API billing is separate from a Claude Pro plan)")
+        print("   • Create API key in 'API Keys' section")
+        print("   • Replace 'your_anthropic_api_key_here' in .env")
+        print()
     
     print("3. Install missing packages:")
     print("   pip install -r requirements.txt")
